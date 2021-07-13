@@ -1,0 +1,375 @@
+{
+    "id_user": null,
+    "name_user": null,
+    "email_user": null,
+    "phone_number": null,
+    "address_user": null,
+    "id_company": null,
+    "chat_history": [
+        {
+            "context": "show product",
+            "action": [
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 1
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Alibaba Cloud"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Alibaba Cloud provides a comprehensive suite of global cloud computing services to power both our international customers\u0092 online businesses and Alibaba Group\u0092s own e-commerce ecosystem. In January 2017, Alibaba Cloud became the official Cloud Services Partner of the International Olympic Committee."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 2
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Cloud Xtream"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "cloud computing is the latest major evolution in computing. Cloud Computing involves deploying groups of remote servers and software networks. It allows different kinds of data sources be uploaded for real time processing to generate computing results, without the need to store processed data. Cloud Xtream that provides speed, flexibility, and scalability."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 3
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Cyberinc"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Cyberinc is an innovative cybersecurity company and our technology helps protect enterprises from web-based malware attacks. We are amongst the first to leverage next generation isolation technology to help eliminate any web-malware from entering our customer\u0092s network. Our flagship product, Isla Malware Isolation Platform helps ensure complete web-freedom without any compromise to end-user experience."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 3
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 4
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Edgecore Networks"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Edgecore Networks Corporation is a wholly-owned subsidiary of Accton Technology Corporation, the leading network ODM.  Edgecore Networks delivers wired and wireless networking products and solutions through channel partners and system integrators worldwide for data center, service provider, enterprise, and SMB customers."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 1
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 5
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Esri"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "ESRI the global market leader in GIS, helping customers get results since 1969 to help solve some of the world\u0092s most difficult problems. We do so by supporting our users\u0092 important work with a commitment to science, sustainability, community, education, research, and positive change. We build ArcGIS, the world\u0092s most powerful mapping & spatial analytics software."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 6
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Extreme Networks"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Since 1996, Extreme has been pushing the boundaries of networking technology, driven by a vision of making it simpler and faster as well as more agile and secure. But our higher purpose has always been helping our customers connect beyond the network, strengthening their relationships with those they serve. Today, we call that Customer-Driven Networking."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 1
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 7
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Finisar"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "As a technology innovator, Finisar has led the industry in creating and delivering breakthrough optics technology and world class products for three decades. With the broadest product portfolio in the industry, Finisar is a trusted partner to networking equipment manufacturers, data center operators, telecom service providers, consumer electronics and automotive companies.   "
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 1
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 8
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "G Element"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Founded since 2001, G Element has transformed itself from a visualization consultancy firm to an innovative, leading-edge 3D software company focusing on smart buildings and cities. We have made it our mission to continually develop technologies and applications that help building owners and managers achieve unified, high-level situation awareness and management for their smart buildings and cities. "
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 4
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 9
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Hillstone Networks"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Hillstone Networks provides Enterprise Security and Risk Management solutions which provide visibility, intelligence, and protection to ensure enterprises can comprehensively see, thoroughly understand and rapidly act against cyber-threats. "
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 3
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 11
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Ignite Net"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "IgniteNet is taking a fresh approach to wireless and wired networks with a focus on simplicity, ease of use and performance. We provide the easiest and lowest cost way for you to grow your network. Whether you're setting up an enterprise network in a corporate setting or installing an outdoor wireless broadband network, we have you covered. Behind all of our equipment is the IgniteNet Cloud, bringing you easy, powerful and affordable cloud-managed WiFi."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 1
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 12
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Imperva"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Imperva is an analyst-recognized, cybersecurity leader championing the fight to secure data and applications wherever they reside. We protect and provide a secure foundation for our customers\u0092 businesses. Once deployed, our solutions proactively identify, evaluate, and eliminate current and emerging threats, so you never have to choose between innovating for customers and protecting what matters most."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 3
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 13
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Lenovo"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Lenovo is a technology company with global reach and expertise without boundaries. Our innovation draws upon a world of knowledge, embracing worldwide collaboration to unlock new thinking and the flexibility to help you capitalize on today\u0092s opportunities and whatever tomorrow brings. "
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 1
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 14
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "SAS"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "SAS Viya (pronounced Veye-ah) is the latest architecture release from SAS. SAS Viya is your one-stop-shop for all your analytic needs. Think of it as a suite of products that do things like data preparation, data visualization, model building, etc., all running on a very powerful in- memory engine. SAS Viya is accessed securely through the web, making it accessible on any device you are using. Whether you are a programmer (both SAS and open source), a business analyst, a data scientist, or an ex"
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 15
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Sensormatic by Johnson Co"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Sensormatic by Johnson Controls, part of Johnson Controls, is a leading provider of analytics-based Loss Prevention, Inventory Intelligence and Traffic Insights. Sensormatic by Johnson Control provides real-time visibility and predictive analytics to help retailers maximize business outcomes and enhance the customer experience in a digitally-driven shopping world. With over 1.5 million data collection devices in the retail marketplace, Sensormatic by Johnson Controls captures 40+ billion shopper"
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 16
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Varonis"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Varonis continually collects and analyzes data from your enterprise data stores and perimeter devices. Offering four main products namely Data Security Platform, DatAdvantage, Data Classification Engine, and DatAlert, we can do things like prioritize your riskiest data based on sensitivity, exposure, and access activity by combining 6 core metadata streams that are essential ingredients for data protection. "
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 3
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 17
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "Veeam"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "Veeam\u00ae Availability Platform\u0099 is the most complete solution to help organizations evolve the way they manage data from policy-based to behavior-based to make it \u0093smarter\u0094 and self-governing, and to ensure data is available across any cloud infrastructure.  "
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 4
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 18
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "IBM Software"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "IBM Software systems and applications are designed to solve the most challenging needs of organizations large and small, across all industries, worldwide."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 19
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "IBM Hardware"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "IBM Hardware goes beyond standard infrastructure to help you put smart to work. Ensure your hardware meets today's expectations & prepares your business for the future."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 1
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 20
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "IBM Cloud"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "IBM Cloud is a platform that helps developers build and run modern apps and services. It provides developers with instant access to the compute and services they need to launch quickly, iterate continuously and scale with success."
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 2
+                    }
+                ],
+                [
+                    {
+                        "desc": "id_brand",
+                        "value": 21
+                    },
+                    {
+                        "desc": "name_brand",
+                        "value": "IBM FlashSystem 9100"
+                    },
+                    {
+                        "desc": "desc_brand",
+                        "value": "IBM\u00ae FlashSystem\u00ae 9100 combines the performance of flash and Non-Volatile Memory Express (NVMe) end-to-end with the reliability and innovation of IBM FlashCore\u00ae technology, the rich features of IBM Spectrum Virtualize\u0099 and AI predictive storage management and proactive support by Storage Insights\u0099\u0097 all in a powerful 2U enterprise-class, blazing fast storage all-flash array. Providing intensive data driven multicloud storage capacity, FlashSystem 9100 allows you to easily add in the multicloud so"
+                    },
+                    {
+                        "desc": "id_services",
+                        "value": 4
+                    }
+                ]
+            ]
+        }
+    ]
+}

@@ -1,0 +1,193 @@
+{"actions" :
+    [
+        {
+            "tag" : "act_register_account",
+            "step":[
+                {
+                    "desc": "name_user",
+                    "response" : "please input your full name ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "email_user",
+                    "response" : "please input your email ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "phone_number",
+                    "response" : "please input your phone_number ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "password_user",
+                    "response" : "please input your password ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "address_user",
+                    "response" : "please input your address ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "id_company",
+                    "response" : "please input your company id ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm saving your data...",
+            "process" : "create_account"
+        },
+        {
+            "tag" : "act_register_company",
+            "step":[
+                {
+                    "desc": "name_company",
+                    "response" : "please input your company name ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "address_company",
+                    "response" : "please input your company address ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "email_company",
+                    "response" : "please input your company email ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm saving your data...",
+            "process" : "create_company"
+        },
+        {
+            "tag" : "act_login_account",
+            "table-name" : "user",
+            "step":[
+                {
+                    "desc": "email_user",
+                    "response" : "please input your email ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "password_user",
+                    "response" : "please input your password ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "login_account"
+        },
+        {
+            "tag" : "act_product",
+            "step":[],
+            "response" : "please wait i'm checking the data...",
+            "process" : "retrive_list_product"
+        },
+        {
+            "tag" : "act_desc_product",
+            "step":[
+                {
+                    "desc": "id_brand",
+                    "response" : "please input brand number that you want to know ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "retrive_desc_product"
+        },
+        {
+            "tag" : "act_benefit_product",
+            "step":[
+                {
+                    "desc": "id_brand",
+                    "response" : "please input brand number that you want to know ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "retrive_benefit_product"
+        },
+        {
+            "tag" : "act_company_product",
+            "step":[
+                {
+                    "desc": "id_company",
+                    "response" : "please input your company id ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "retrive_list_company_product"
+        },
+        {
+            "tag" : "act_request_product",
+            "step":[
+                {
+                    "desc": "id_brand",
+                    "response" : "please input brand number that you interested ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "request_product"
+        },
+        {
+            "tag" : "act_request_maintenance",
+            "step":[
+                {
+                    "desc": "id_subscribe_product",
+                    "response" : "please input your id product ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "desc_maintenance",
+                    "response" : "please describe the issues ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "severity_level",
+                    "response" : "from scale 1 to 3, how much impact does the problem have on your company ?...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "request_maintenance"
+        },
+        {
+            "tag" : "act_history_maintenance",
+            "step":[
+                {
+                    "desc": "id_company",
+                    "response" : "please input your id company ...",
+                    "value" : ""
+                },
+                {
+                    "desc": "id_subscribe_product",
+                    "response" : "please input your id product ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "retrive_history_maintenance"
+        },
+        {
+            "tag" : "act_service",
+            "step":[],
+            "response" : "please wait i'm checking your data...",
+            "process" : "retrive_list_service"
+        },
+        {
+            "tag" : "act_desc_service",
+            "step":[
+                {
+                    "desc": "id_services",
+                    "response" : "please input service number that you want to know ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking your data...",
+            "process" : "retrive_desc_service"
+        },
+        {
+            "tag" : "act_request_service",
+            "step":[
+                {
+                    "desc": "id_services",
+                    "response" : "please input service number that you interested ...",
+                    "value" : ""
+                }],
+            "response" : "please wait i'm checking service data...",
+            "process" : "retrive_list_product_by_service"
+        }
+    ]
+}
