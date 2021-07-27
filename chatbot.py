@@ -11,7 +11,6 @@ from nltk.stem.snowball import SnowballStemmer
 from nltk import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from chatbotapi.data_model.db_func.db_brand_func import *
-from chatbotapi.data_model.db_func.db_service_func import *
 from lstm_func import *
 from text_preprocesssing import *
 
@@ -97,28 +96,20 @@ for i in range(len(documents) - batch_size+1):
 
 
 print(np.asarray(y_data).shape)
+
+#number of input epochs
+ephocs = 50
 #number of input units or embedding size
 input_units = 100
 
 #number of hidden neurons
 hidden_units = 256
 
-#number of output units i.e vocab size
-output_units = vocab_size_word
-
-#learning rate
-learning_rate = 0.005
-
-#beta1 for V parameters used in Adam Optimizer
-beta1 = 0.90
-
-#beta2 for S parameters used in Adam Optimizer
-beta2 = 0.99
 
 
 data_size = len(x_data)
 print(batch_size)
-embeddings,parameters,J,P,A = train(x_data,vocab_size_word,y_data,vocab_size_label,input_units,256,50)
+embeddings,parameters,J,P,A = train(x_data,vocab_size_word,y_data,vocab_size_label,input_units,hidden_units,ephocs)
 
 #Let's Plot some graphs
 avg_loss = list()

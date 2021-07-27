@@ -5,24 +5,18 @@ from sqlalchemy.sql.expression import null
 sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
-from model_db import SubscribeProduct, Company, User ,Session
+from model_db import SubscribeProduct, Company, User, Product,Brand ,Session
 
 
 session = Session()
 
-def insertSubscribeProduct(id_user , id_brand, status_code):
-    checkUserCompany = session.query(User).filter(User.id_user == id_user).first()
-    checkduplicacte = session.query(User).join(SubscribeProduct).filter(User.id_company == checkUserCompany.id_company, SubscribeProduct.id_brand == id_brand).first()
+def insertSubscribeProduct(id_user,id_company , id_product, status_code):
+    newSubscribeProduct = SubscribeProduct(id_user=id_user,id_company=id_company, id_product=id_product, status_code=status_code)
+    session.add(newSubscribeProduct)
     session.commit()
-    message = ""
-    if checkduplicacte != None : message = "1 of your colleague with name '"+ checkduplicacte.name_user+"' already requested the same product"
-    else :
-        newSubscribeProduct = SubscribeProduct(id_user=id_user, id_brand=id_brand, status_code=status_code)
-        session.add(newSubscribeProduct)
-        session.commit()
-        message = "request product success"
+    message = "request product success"
 
-    return message,newSubscribeProduct
+    return newSubscribeProduct
 
 def updateSubscribeProduct(id_subscribe_product, field_name, value):
     subscribe_product = session.query(SubscribeProduct).filter(SubscribeProduct.id_subscribe_product == id_subscribe_product)
@@ -35,14 +29,25 @@ def deleteSubscribeProduct(id_subscribe_product):
     session.commit()
 
 def getAllSubscribeProduct():
-    subscribe_product = session.query(SubscribeProduct).all()
+    subscribe_product = session.query(SubscribeProduct,User,Company,Product).join(User, User.id_user == SubscribeProduct.id_user).join(Company, Company.id_company == SubscribeProduct.id_company).join(Product, Product.id_product == SubscribeProduct.id_product).all()
     session.commit()
+    print(subscribe_product[0][1].id_user)
     return subscribe_product
 
 def getAlSubscribeProductByCompany(id_company):
-    subscribe_product = session.query(SubscribeProduct).join(User).filter(User.id_company == id_company and SubscribeProduct.status_code == 0).all()
+    subscribe_product = session.query(SubscribeProduct, User, Company, Product).join(User, User.id_user == SubscribeProduct.id_user).join(Company, Company.id_company == SubscribeProduct.id_company).join(Product, Product.id_product == SubscribeProduct.id_product).filter(SubscribeProduct.id_company == id_company and SubscribeProduct.status_code == 1).all()
     session.commit()
     if len(subscribe_product) > 0 :
-        return "product Found",subscribe_product
+        return "product Found", subscribe_product
     else :
-        return "product Not Found",subscribe_product
+        return "product Not Found", subscribe_product
+
+def getSubscribeProductByIdSubscribe(id_subcribe_product):
+    subscribe_product = session.query(SubscribeProduct, User, Company, Product,Brand).join(User, User.id_user == SubscribeProduct.id_user).join(Company, Company.id_company == SubscribeProduct.id_company).join(Product, Product.id_product == SubscribeProduct.id_product).join(Brand, Brand.id_brand == Product.id_brand).filter(SubscribeProduct.id_subcribe_product == id_subcribe_product).first()
+    session.commit()
+    return subscribe_product
+
+
+
+
+

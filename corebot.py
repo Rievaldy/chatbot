@@ -27,7 +27,8 @@ def hotEncodeMessage(message):
 
     words = word_tokenize(message)
     words = [stemmer.stem(word) for word in words if word not in ignore_latters if word not in stop_word ]
-    words = pad_sequences(20,words)
+    words = [word for word in words if word in saved_word_id.keys()]
+    words = pad_sequences(11,words)
     print(words)
     #hot encode
     for i in range(len(words)):
@@ -61,16 +62,18 @@ def findPrediction(predictions_accuracy):
 
 def lookOnSpecificTag(tag_name):
     response = ""
+    desc = ""
     context = ""
     action = ""
     permission = ""
     for intent in intents['intents']:
         if intent['tag'] == tag_name :
             response = intent['responses']
-            context = intent['context']
+            desc = intent['desc']
             permission = intent['permission']
             action = intent['action']
-    return response, context,permission, action
+            context = intent['context']
+    return response, desc, permission, action,context
 
 def predict_classes(message):
     predict = []
@@ -81,11 +84,12 @@ def predict_classes(message):
     a0 = np.zeros([1,256],dtype=np.float32)
     c0 = np.zeros([1,256],dtype=np.float32)
 
+    if hotEncodedMessage[0][0][0] == 1.0 : return None
     for i in range(len(hotEncodedMessage)) :
         if hotEncodedMessage[i][0][0] != 1.0 :
             embedding = get_embeddings(hotEncodedMessage[i], saved_embeddings)
             #lstm cell
-            lstm_activations,ct,at = lstm_cell(embedding,a0,c0,saved_parameters)
+            lstm_activations, ct, at = lstm_cell(embedding,a0,c0,saved_parameters)
             ot = output_cell(at,saved_parameters)
             a0 = at
             c0 = ct
@@ -113,69 +117,3 @@ def predict_classes(message):
 
     return predicted_label
 
-context = ""
-
-id_user = "unknown"
-name_user = ""
-email_user = ""
-phone_number = ""
-address_user = ""
-id_company = ""
-chat_history = []
-template_json = {"id_user" : None,
-                 "name_user" : None,
-                 "email_user" : None, 
-                 "phone_number" : None,
-                 "address_user" : None, 
-                 "id_company" : None,
-                 "chat_history": chat_history}
-
-def extractEntity(message):
-    regex_find_desc = r"\w+(?=\s+id)"
-    regex_find_id_value = r"(?<=id\s)\d+"
-    result = []
-
-    id_desc = re.findall(regex_find_desc,message)
-    id_value = re.findall(regex_find_id_value,message)
-    for i in range(len(id_desc)) :
-        if id_desc[i] == "product" : id_desc[i] = "id_brand"
-        else : id_desc[i] = "id_"+id_desc[i]
-        result.append({"desc_name": id_desc[i], "value" : id_value[i]})
-    return result
-
-'''while True:
-    action_template = []
-
-    message = input("input something : ")
-    entityExtracted = extractEntity(message)
-    ints = predict_classes(message)
-    print(ints)
-    if len(ints) > 1 :
-        response_message = "im confused, do you want to  "
-        for i in range(len(ints)) :
-            response, context, action = lookOnSpecificTag(ints[i])
-            response_message += context
-            if i != len(ints)-1 : response_message += " or "
-        print(response_message, " ?")
-    else :
-        response, context, permission, action = lookOnSpecificTag(ints[0])
-        if permission == "Login" and id_user == "unknown" : 
-            print("unable to do this command, need to login first")
-        else :
-            print(response)
-            if action != "" :
-                action_template = performAction(id_user,action,entityExtracted)
-                if context == "register account" or context == "login account" :
-                    for i in range(len(action_template)):
-                        if action_template[i]['desc'] == "id_user" :
-                             template_json['id_user'] = action_template[i]['value']
-                             id_user = action_template[i]['value']
-                        elif action_template[i]['desc'] == "name_user" : template_json['name_user'] = action_template[i]['value']
-                        elif action_template[i]['desc'] == "email_user" : template_json['email_user']  = action_template[i]['value']
-                        elif action_template[i]['desc'] == "address_user" : template_json['address_user']  = action_template[i]['value']
-                        elif action_template[i]['desc'] == "id_company" : template_json['id_company']  = action_template[i]['value']              
-
-        chat_history.append({'context' : context, 'action' : action_template})
-        json_object = json.dumps(template_json, indent = 4)
-        with open("chatbot\\test_siemese_network\\dialog\\"+str(id_user)+".json",'w') as outfile :
-            outfile.write(json_object)'''

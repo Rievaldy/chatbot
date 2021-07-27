@@ -10,18 +10,25 @@ sys.path.append(
     os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 
 from model_db import User, Session
-from model_db import User,Brand, Product, Services, Company,Maintenance,Session
+from model_db import User,Session
 
 session = Session()
 
-def extract_explainer(text):
-    regex = re.compile(r'\'[\w\@\.]+\'')
-    value = re.findall(regex, text)
-    message = value[0] +" already exist please use different "+value[1]
-    return message
+def extract_explainer(code,text,id_company):
+    
+    regex1452 = re.compile(r'(?<=REFERENCES\s\`)[A-Z|a-z]+')
 
-def insertUserData(name_user, email_user, password_user, phone_number, address_user,id_company):
-    newUser = User(name_user=name_user, email_user=email_user,password_user=password_user, address_user=address_user, phone_number=phone_number, id_company=id_company)
+    if code == 1062 :
+        message = " already exist !"
+
+    if code == 1452 :
+        value = re.findall(regex1452, text)
+        message = "can't found "+ value[0]
+    return message
+    
+
+def insertUserData(id_user, name_user, email_user, phone_number, address_user, id_company):
+    newUser = User(id_user= id_user, name_user=name_user, email_user=email_user, address_user=address_user, phone_number=phone_number, id_company=id_company)
     message = ""
     try:
         session.add(newUser)
@@ -29,9 +36,8 @@ def insertUserData(name_user, email_user, password_user, phone_number, address_u
     except IntegrityError as e:
         code = e.orig.args[0]
         explain = e.orig.args[1]
-        if code == 1062 : 
-            message = extract_explainer(explain)
-        session.rollback()
+        print(code)
+        message = extract_explainer(code,explain,id_company)
         return message,newUser
     else:
         return "Register Success", newUser
@@ -48,18 +54,13 @@ def deleteUserData(id_user):
 
 def getUserData(id_user):
     user = session.query(User).filter(User.id_user == id_user).first()
-    message = ""
     try:
         session.commit()
     except SQLAlchemyError as e :
-        message = e.__cause__
-        return message, user
+        return None
     else :
-        if user is not None :
-            message =  "user found"
-        else :
-             message = "not found"
-        return message, user
+        return user
+        
 
 def userLogin(email_user, password_user):
     user = session.query(User).filter(User.email_user == email_user and User.password_user == password_user).first()
@@ -67,5 +68,4 @@ def userLogin(email_user, password_user):
     if user is not None : message =  "Login Success"
     else : message = "Unable to find with given Email and Password"
     return message, user
-            
-print(User.__table__.columns.keys())
+

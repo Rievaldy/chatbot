@@ -24,11 +24,13 @@ stop_word = set(stopwords.words('english'))
 def hotEncodeMessage(message):
     stemmer = SnowballStemmer('english')
     messageEncoded = []
+    print(saved_word_id.keys())
 
     words = word_tokenize(message)
-    words = [stemmer.stem(word) for word in words if word not in ignore_latters if word not in stop_word if word in saved_label_id.keys() ]
-    words = pad_sequences(20,words)
-    print(words)
+    words = [stemmer.stem(word) for word in words if word not in ignore_latters if word not in stop_word ]
+    words = [word for word in words if word in saved_word_id.keys()]
+    words = pad_sequences(11,words)
+    
     #hot encode
     for i in range(len(words)):
         hotEncodedWord = np.zeros((1, len(saved_id_word)))
@@ -77,6 +79,7 @@ def predict_classes(message):
     predicted_label = ""
 
     hotEncodedMessage = hotEncodeMessage(message)
+    print(hotEncodedMessage)
 
     a0 = np.zeros([1,256],dtype=np.float32)
     c0 = np.zeros([1,256],dtype=np.float32)
@@ -145,11 +148,11 @@ def extractEntity(message):
     return result
 
 
-
-def bot(id_chat,msg) :
+isInputAction=False
+def bot(id_user,id_chat,msg) :
     context = ""
     chat_history = []
-    template_json = {"id_user" : id_chat,
+    template_json = {"id_user" : id_user,
                     "name_user" : None,
                     "email_user" : None, 
                     "phone_number" : None,
@@ -158,38 +161,27 @@ def bot(id_chat,msg) :
                     "chat_history": chat_history}
     
     reply = ""
-    action_template = []
 
     if msg == "/start": reply = "hello im bpt protect bot !"
     else :
         ints = predict_classes(msg)
-        print(ints)
-    if len(ints) > 1 :
-        response_message = "im confused, do you want to  "
-        for i in range(len(ints)) :
-            response, context, action = lookOnSpecificTag(ints[i])
-            response_message += context
-            if i != len(ints)-1 : response_message += " or "
-        print(response_message, " ?")
-    else :
-        response, context, permission, action = lookOnSpecificTag(ints[0])
-        if permission == "Login" and id_user == "unknown" : 
-            reply = "unable to do this command, need to login first")
+        if len(ints) > 1 :
+            reply = "im confused, do you want to  "
+            for i in range(len(ints)) :
+                response, context, permission,action = lookOnSpecificTag(ints[i])
+                reply += context
+                if i != len(ints)-1 : reply += " or "
+            reply+= " ?"
         else :
-            reply = response
-            if action != "" :
-                action_template = performAction(id_user,action)
-                if context == "register account" or context == "login account" :
-                    for i in range(len(action_template)):
-                        if action_template[i]['desc'] == "id_user" :
-                             template_json['id_user'] = action_template[i]['value']
-                        elif action_template[i]['desc'] == "name_user" : template_json['name_user'] = action_template[i]['value']
-                        elif action_template[i]['desc'] == "email_user" : template_json['email_user']  = action_template[i]['value']
-                        elif action_template[i]['desc'] == "address_user" : template_json['address_user']  = action_template[i]['value']
-                        elif action_template[i]['desc'] == "id_company" : template_json['id_company']  = action_template[i]['value']              
-
-        chat_history.append({'context' : context, 'action' : action_template})
-        json_object = json.dumps(template_json, indent = 4)
-        with open("chatbot\\test_siemese_network\\dialog\\"+str(template_json['id_user'])+".json",'w') as outfile :
-            outfile.write(json_object)
-    return ints
+            response, context, permission, action = lookOnSpecificTag(ints[0])
+            if permission == "Login" and id_user == "unknown" : 
+                reply = "unable to do this command, need to login first"
+            else :
+                reply = response
+                if action != "" :
+                    actionstep_template = gettingStepInput(action)           
+            chat_history.append({'id_chat': id_chat,'context' : context, 'user_input' : actionstep_template, 'result': None})
+            json_object = json.dumps(template_json, indent = 4)
+            with open("chatbot\\test_siemese_network\\dialog\\"+str(template_json['id_user'])+".json",'w') as outfile :
+                outfile.write(json_object)
+    return reply

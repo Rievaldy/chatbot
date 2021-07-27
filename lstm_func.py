@@ -552,11 +552,11 @@ def initialize_S(parameters):
         Update the Parameters and Embeddings
 Batch Size = 20 Repeat the steps 2-5 for each batch!'''
 
-def train(x_data,vocab_x_size, y_data, vocab_y_data, input_size,hiden_units,epochs):
+def train(x_data,vocab_x_size, y_data, vocab_y_size, input_size,hiden_units,epochs):
     batch_size = len(x_data)
 
     #initalize the parameters
-    parameters = initialize_parameters(input_size,hiden_units,vocab_y_data)
+    parameters = initialize_parameters(input_size,hiden_units,vocab_y_size)
     
     #initialize the V and S parameters for Adam
     #generate the random embeddings
