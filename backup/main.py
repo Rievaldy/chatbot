@@ -114,7 +114,7 @@ while True:
                             tbot.send_message(for_user, from_)
         else :
             selected_chathistory = None
-            for i in range(len(chat_history)-1, -1, -1) :
+            for i in reversed(range(len(chat_history)-1)) :
                 if chat_history[i]['desc_tag'] ==  user_status['for_desc_tag']: 
                     selected_chathistory = chat_history[i]
                     for j in range(0,len(selected_chathistory['user_input'])):
