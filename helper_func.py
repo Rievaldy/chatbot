@@ -112,7 +112,8 @@ def add_user_chat_history(id_user, context, desc_tag, user_input, result):
 def edit_user_chat_history(id_user, context, desc_tag, user_input, result):
     path = "chatbot\\test_siemese_network\\dialog\\"+str(id_user)+".json"
     user_json = loadJson(path)
-    recent_chat_history = user_json['chat_history']
+    size_chat_history = user_json['chat_history']
+    recent_chat_history = user_json['chat_history'][size_chat_history-1]
     if context != "" :
         recent_chat_history['context'] = context
     elif desc_tag != "" :
@@ -120,7 +121,9 @@ def edit_user_chat_history(id_user, context, desc_tag, user_input, result):
     elif user_input != "" :
         recent_chat_history['user_input'] = user_input
     elif result != "" :
-        recent_chat_history['result'] = result    
+        recent_chat_history['result'] = result  
+
+    writeJson(user_json,path)
 
 
 def change_user_status(id_user, isGoingThroughStep, for_desc_tag, waiting_for_input, process):
@@ -137,6 +140,14 @@ def change_user_status(id_user, isGoingThroughStep, for_desc_tag, waiting_for_in
 
     writeJson(user_json,path)
 
-        
-    
+def change_chat_history_input_value(id_user,target_desc,value):
+    path = "chatbot\\test_siemese_network\\dialog\\"+str(id_user)+".json"
+    user_json = loadJson(path)
+    size_chat_history = user_json['chat_history']
+    recent_chat_history = user_json['chat_history'][size_chat_history-1]
+    for i in range(recent_chat_history['user_input']) :
+        if recent_chat_history['user_input']['desc'] == target_desc :
+            recent_chat_history['user_input']['desc'] = value
+            break
+    writeJson(user_json,path)
 

@@ -19,7 +19,7 @@
                 },
                 {
                     "desc": "phone_number",
-                    "response" : "please input your phone_number ...",
+                    "response" : "please input your phone number ...",
                     "value" : "",
                     "helper_information" : "",
                     "input_validation" : "phone number"
