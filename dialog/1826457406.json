@@ -1,14 +1,759 @@
 {
     "user_status": {
         "isGoingThroughStep": true,
-        "for_desc_tag": "requesting emergency maintenance",
+        "for_desc_tag": "pesan pemeliharaan darurat",
         "waiting_for_input": "id_subscribe_product",
         "process": "request_maintenance"
     },
     "chat_history": [
         {
+            "context": "maintenance",
+            "desc_tag": "pesan pemeliharaan darurat",
+            "user_input": [
+                {
+                    "response": "please input your id product ...",
+                    "desc": "id_subscribe_product",
+                    "value": 43,
+                    "input_validation": "available number option",
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_subscribe_product": 39,
+                                "id_user": "1070344922",
+                                "id_product": 34,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 2,
+                                "id_subscribe_product": 43,
+                                "id_user": "1070344922",
+                                "id_product": 30,
+                                "id_company": 1111,
+                                "maintenance_ticket": 5,
+                                "request_date": "2021-07-30",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 3,
+                                "id_subscribe_product": 35,
+                                "id_user": "1826457406",
+                                "id_product": 1,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-13",
+                                "end_date": "2022-01-22",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 4,
+                                "id_subscribe_product": 36,
+                                "id_user": "1826457406",
+                                "id_product": 5,
+                                "id_company": 1111,
+                                "maintenance_ticket": 50,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-06",
+                                "end_date": "2021-07-31",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 5,
+                                "id_subscribe_product": 37,
+                                "id_user": "1826457406",
+                                "id_product": 39,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-07-16",
+                                "status_code": 1
+                            }
+                        ],
+                        "helper_for_user": "*1. Analytics*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*2. Continously Updated*\nMaintenance Ticket : 5\nRequest Date : 2021-07-30\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*3. Infrastructure as a Services*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-13\nEnd Date : 2022-01-22\nRequested By : rievaldy\n\n*4. Cloud Disaster Recovery*\nMaintenance Ticket : 50\nRequest Date : 2021-07-28\nStart Date : 2021-07-06\nEnd Date : 2021-07-31\nRequested By : rievaldy\n\n*5. DatAlert*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-07-16\nRequested By : rievaldy\n\n"
+                    }
+                },
+                {
+                    "response": "please describe the issues ...",
+                    "desc": "desc_maintenance",
+                    "value": "aplikasi saya hang gak tau kenapa muncul error 202",
+                    "input_validation": "",
+                    "helper_information": ""
+                },
+                {
+                    "response": "from scale 1 to 3, how much impact does the problem have on your company ?...",
+                    "desc": "severity_level",
+                    "value": "2",
+                    "input_validation": "severity level",
+                    "helper_information": ""
+                }
+            ],
+            "result": {
+                "id_user": "1826457406",
+                "id_subcribe_product": 43,
+                "request_date": "2021-08-01",
+                "finish_date": null,
+                "severity_level": 2,
+                "status_code": 0
+            }
+        },
+        {
+            "context": "maintenance",
+            "desc_tag": "pesan pemeliharaan darurat",
+            "user_input": [
+                {
+                    "response": "please input your id product ...",
+                    "desc": "id_subscribe_product",
+                    "value": 43,
+                    "input_validation": "available number option",
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_subscribe_product": 39,
+                                "id_user": "1070344922",
+                                "id_product": 34,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 2,
+                                "id_subscribe_product": 43,
+                                "id_user": "1070344922",
+                                "id_product": 30,
+                                "id_company": 1111,
+                                "maintenance_ticket": 5,
+                                "request_date": "2021-07-30",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 3,
+                                "id_subscribe_product": 35,
+                                "id_user": "1826457406",
+                                "id_product": 1,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-13",
+                                "end_date": "2022-01-22",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 4,
+                                "id_subscribe_product": 36,
+                                "id_user": "1826457406",
+                                "id_product": 5,
+                                "id_company": 1111,
+                                "maintenance_ticket": 50,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-06",
+                                "end_date": "2021-07-31",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 5,
+                                "id_subscribe_product": 37,
+                                "id_user": "1826457406",
+                                "id_product": 39,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-07-16",
+                                "status_code": 1
+                            }
+                        ],
+                        "helper_for_user": "*1. Analytics*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*2. Continously Updated*\nMaintenance Ticket : 5\nRequest Date : 2021-07-30\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*3. Infrastructure as a Services*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-13\nEnd Date : 2022-01-22\nRequested By : rievaldy\n\n*4. Cloud Disaster Recovery*\nMaintenance Ticket : 50\nRequest Date : 2021-07-28\nStart Date : 2021-07-06\nEnd Date : 2021-07-31\nRequested By : rievaldy\n\n*5. DatAlert*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-07-16\nRequested By : rievaldy\n\n"
+                    }
+                },
+                {
+                    "response": "please describe the issues ...",
+                    "desc": "desc_maintenance",
+                    "value": "tiba tiba aplikasi saya crash",
+                    "input_validation": "",
+                    "helper_information": ""
+                },
+                {
+                    "response": "from scale 1 to 3, how much impact does the problem have on your company ?...",
+                    "desc": "severity_level",
+                    "value": "2",
+                    "input_validation": "severity level",
+                    "helper_information": ""
+                }
+            ],
+            "result": ""
+        },
+        {
+            "context": "maintenance",
+            "desc_tag": "pesan pemeliharaan darurat",
+            "user_input": [
+                {
+                    "response": "please input your id product ...",
+                    "desc": "id_subscribe_product",
+                    "value": 43,
+                    "input_validation": "available number option",
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_subscribe_product": 39,
+                                "id_user": "1070344922",
+                                "id_product": 34,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 2,
+                                "id_subscribe_product": 43,
+                                "id_user": "1070344922",
+                                "id_product": 30,
+                                "id_company": 1111,
+                                "maintenance_ticket": 5,
+                                "request_date": "2021-07-30",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 3,
+                                "id_subscribe_product": 35,
+                                "id_user": "1826457406",
+                                "id_product": 1,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-13",
+                                "end_date": "2022-01-22",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 4,
+                                "id_subscribe_product": 36,
+                                "id_user": "1826457406",
+                                "id_product": 5,
+                                "id_company": 1111,
+                                "maintenance_ticket": 50,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-06",
+                                "end_date": "2021-07-31",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 5,
+                                "id_subscribe_product": 37,
+                                "id_user": "1826457406",
+                                "id_product": 39,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-07-16",
+                                "status_code": 1
+                            }
+                        ],
+                        "helper_for_user": "*1. Analytics*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*2. Continously Updated*\nMaintenance Ticket : 5\nRequest Date : 2021-07-30\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*3. Infrastructure as a Services*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-13\nEnd Date : 2022-01-22\nRequested By : rievaldy\n\n*4. Cloud Disaster Recovery*\nMaintenance Ticket : 50\nRequest Date : 2021-07-28\nStart Date : 2021-07-06\nEnd Date : 2021-07-31\nRequested By : rievaldy\n\n*5. DatAlert*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-07-16\nRequested By : rievaldy\n\n"
+                    }
+                },
+                {
+                    "response": "please describe the issues ...",
+                    "desc": "desc_maintenance",
+                    "value": "hang",
+                    "input_validation": "",
+                    "helper_information": ""
+                },
+                {
+                    "response": "from scale 1 to 3, how much impact does the problem have on your company ?...",
+                    "desc": "severity_level",
+                    "value": "2",
+                    "input_validation": "severity level",
+                    "helper_information": ""
+                }
+            ],
+            "result": {
+                "id_user": "1826457406",
+                "id_subcribe_product": 43,
+                "request_date": "2021-08-01",
+                "finish_date": null,
+                "severity_level": 2,
+                "status_code": 0
+            }
+        },
+        {
+            "context": "list brand",
+            "desc_tag": "daftar merek",
+            "user_input": [],
+            "result": [
+                {
+                    "number": 1,
+                    "id_brand": 1,
+                    "name_brand": "Alibaba Cloud"
+                },
+                {
+                    "number": 2,
+                    "id_brand": 2,
+                    "name_brand": "Cloud Xtream"
+                },
+                {
+                    "number": 3,
+                    "id_brand": 3,
+                    "name_brand": "Cyberinc"
+                },
+                {
+                    "number": 4,
+                    "id_brand": 4,
+                    "name_brand": "Edgecore Networks"
+                },
+                {
+                    "number": 5,
+                    "id_brand": 5,
+                    "name_brand": "Esri"
+                },
+                {
+                    "number": 6,
+                    "id_brand": 6,
+                    "name_brand": "Extreme Networks"
+                },
+                {
+                    "number": 7,
+                    "id_brand": 7,
+                    "name_brand": "Finisar"
+                },
+                {
+                    "number": 8,
+                    "id_brand": 8,
+                    "name_brand": "G Element"
+                },
+                {
+                    "number": 9,
+                    "id_brand": 9,
+                    "name_brand": "Hillstone Networks"
+                },
+                {
+                    "number": 10,
+                    "id_brand": 10,
+                    "name_brand": "IBM"
+                },
+                {
+                    "number": 11,
+                    "id_brand": 11,
+                    "name_brand": "Ignite Net"
+                },
+                {
+                    "number": 12,
+                    "id_brand": 12,
+                    "name_brand": "Imperva"
+                },
+                {
+                    "number": 13,
+                    "id_brand": 13,
+                    "name_brand": "Lenovo"
+                },
+                {
+                    "number": 14,
+                    "id_brand": 14,
+                    "name_brand": "SAS"
+                },
+                {
+                    "number": 15,
+                    "id_brand": 15,
+                    "name_brand": "Sensormatic by Johnson Co"
+                },
+                {
+                    "number": 16,
+                    "id_brand": 16,
+                    "name_brand": "Varonis"
+                }
+            ]
+        },
+        {
+            "context": "list brand",
+            "desc_tag": "daftar merek",
+            "user_input": [],
+            "result": [
+                {
+                    "number": 1,
+                    "id_brand": 1,
+                    "name_brand": "Alibaba Cloud"
+                },
+                {
+                    "number": 2,
+                    "id_brand": 2,
+                    "name_brand": "Cloud Xtream"
+                },
+                {
+                    "number": 3,
+                    "id_brand": 3,
+                    "name_brand": "Cyberinc"
+                },
+                {
+                    "number": 4,
+                    "id_brand": 4,
+                    "name_brand": "Edgecore Networks"
+                },
+                {
+                    "number": 5,
+                    "id_brand": 5,
+                    "name_brand": "Esri"
+                },
+                {
+                    "number": 6,
+                    "id_brand": 6,
+                    "name_brand": "Extreme Networks"
+                },
+                {
+                    "number": 7,
+                    "id_brand": 7,
+                    "name_brand": "Finisar"
+                },
+                {
+                    "number": 8,
+                    "id_brand": 8,
+                    "name_brand": "G Element"
+                },
+                {
+                    "number": 9,
+                    "id_brand": 9,
+                    "name_brand": "Hillstone Networks"
+                },
+                {
+                    "number": 10,
+                    "id_brand": 10,
+                    "name_brand": "IBM"
+                },
+                {
+                    "number": 11,
+                    "id_brand": 11,
+                    "name_brand": "Ignite Net"
+                },
+                {
+                    "number": 12,
+                    "id_brand": 12,
+                    "name_brand": "Imperva"
+                },
+                {
+                    "number": 13,
+                    "id_brand": 13,
+                    "name_brand": "Lenovo"
+                },
+                {
+                    "number": 14,
+                    "id_brand": 14,
+                    "name_brand": "SAS"
+                },
+                {
+                    "number": 15,
+                    "id_brand": 15,
+                    "name_brand": "Sensormatic by Johnson Co"
+                },
+                {
+                    "number": 16,
+                    "id_brand": 16,
+                    "name_brand": "Varonis"
+                }
+            ]
+        },
+        {
+            "context": "list brand",
+            "desc_tag": "daftar merek",
+            "user_input": [],
+            "result": [
+                {
+                    "number": 1,
+                    "id_brand": 1,
+                    "name_brand": "Alibaba Cloud"
+                },
+                {
+                    "number": 2,
+                    "id_brand": 2,
+                    "name_brand": "Cloud Xtream"
+                },
+                {
+                    "number": 3,
+                    "id_brand": 3,
+                    "name_brand": "Cyberinc"
+                },
+                {
+                    "number": 4,
+                    "id_brand": 4,
+                    "name_brand": "Edgecore Networks"
+                },
+                {
+                    "number": 5,
+                    "id_brand": 5,
+                    "name_brand": "Esri"
+                },
+                {
+                    "number": 6,
+                    "id_brand": 6,
+                    "name_brand": "Extreme Networks"
+                },
+                {
+                    "number": 7,
+                    "id_brand": 7,
+                    "name_brand": "Finisar"
+                },
+                {
+                    "number": 8,
+                    "id_brand": 8,
+                    "name_brand": "G Element"
+                },
+                {
+                    "number": 9,
+                    "id_brand": 9,
+                    "name_brand": "Hillstone Networks"
+                },
+                {
+                    "number": 10,
+                    "id_brand": 10,
+                    "name_brand": "IBM"
+                },
+                {
+                    "number": 11,
+                    "id_brand": 11,
+                    "name_brand": "Ignite Net"
+                },
+                {
+                    "number": 12,
+                    "id_brand": 12,
+                    "name_brand": "Imperva"
+                },
+                {
+                    "number": 13,
+                    "id_brand": 13,
+                    "name_brand": "Lenovo"
+                },
+                {
+                    "number": 14,
+                    "id_brand": 14,
+                    "name_brand": "SAS"
+                },
+                {
+                    "number": 15,
+                    "id_brand": 15,
+                    "name_brand": "Sensormatic by Johnson Co"
+                },
+                {
+                    "number": 16,
+                    "id_brand": 16,
+                    "name_brand": "Varonis"
+                }
+            ]
+        },
+        {
+            "context": "brand",
+            "desc_tag": "rincian merek",
+            "user_input": [
+                {
+                    "response": "please input brand number that you want to know ...",
+                    "desc": "id_brand",
+                    "value": 2,
+                    "input_validation": "available number option",
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_brand": 1,
+                                "name_brand": "Alibaba Cloud"
+                            },
+                            {
+                                "number": 2,
+                                "id_brand": 2,
+                                "name_brand": "Cloud Xtream"
+                            },
+                            {
+                                "number": 3,
+                                "id_brand": 3,
+                                "name_brand": "Cyberinc"
+                            },
+                            {
+                                "number": 4,
+                                "id_brand": 4,
+                                "name_brand": "Edgecore Networks"
+                            },
+                            {
+                                "number": 5,
+                                "id_brand": 5,
+                                "name_brand": "Esri"
+                            },
+                            {
+                                "number": 6,
+                                "id_brand": 6,
+                                "name_brand": "Extreme Networks"
+                            },
+                            {
+                                "number": 7,
+                                "id_brand": 7,
+                                "name_brand": "Finisar"
+                            },
+                            {
+                                "number": 8,
+                                "id_brand": 8,
+                                "name_brand": "G Element"
+                            },
+                            {
+                                "number": 9,
+                                "id_brand": 9,
+                                "name_brand": "Hillstone Networks"
+                            },
+                            {
+                                "number": 10,
+                                "id_brand": 10,
+                                "name_brand": "IBM"
+                            },
+                            {
+                                "number": 11,
+                                "id_brand": 11,
+                                "name_brand": "Ignite Net"
+                            },
+                            {
+                                "number": 12,
+                                "id_brand": 12,
+                                "name_brand": "Imperva"
+                            },
+                            {
+                                "number": 13,
+                                "id_brand": 13,
+                                "name_brand": "Lenovo"
+                            },
+                            {
+                                "number": 14,
+                                "id_brand": 14,
+                                "name_brand": "SAS"
+                            },
+                            {
+                                "number": 15,
+                                "id_brand": 15,
+                                "name_brand": "Sensormatic by Johnson Co"
+                            },
+                            {
+                                "number": 16,
+                                "id_brand": 16,
+                                "name_brand": "Varonis"
+                            }
+                        ],
+                        "helper_for_user": "*1.Alibaba Cloud*\n*2.Cloud Xtream*\n*3.Cyberinc*\n*4.Edgecore Networks*\n*5.Esri*\n*6.Extreme Networks*\n*7.Finisar*\n*8.G Element*\n*9.Hillstone Networks*\n*10.IBM*\n*11.Ignite Net*\n*12.Imperva*\n*13.Lenovo*\n*14.SAS*\n*15.Sensormatic by Johnson Co*\n*16.Varonis*\n"
+                    }
+                }
+            ],
+            "result": {
+                "id_brand": 2,
+                "name_brand": "Cloud Xtream",
+                "desc_brand": "cloud computing is the latest major evolution in computing. Cloud Computing involves deploying groups of remote servers and software networks. It allows different kinds of data sources be uploaded for real time processing to generate computing results, without the need to store processed data. Cloud Xtream that provides speed, flexibility, and scalability."
+            }
+        },
+        {
+            "context": "maintenance",
+            "desc_tag": "pesan pemeliharaan darurat",
+            "user_input": [
+                {
+                    "response": "please input your id product ...",
+                    "desc": "id_subscribe_product",
+                    "value": 43,
+                    "input_validation": "available number option",
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_subscribe_product": 39,
+                                "id_user": "1070344922",
+                                "id_product": 34,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 2,
+                                "id_subscribe_product": 43,
+                                "id_user": "1070344922",
+                                "id_product": 30,
+                                "id_company": 1111,
+                                "maintenance_ticket": 5,
+                                "request_date": "2021-07-30",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 3,
+                                "id_subscribe_product": 35,
+                                "id_user": "1826457406",
+                                "id_product": 1,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-13",
+                                "end_date": "2022-01-22",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 4,
+                                "id_subscribe_product": 36,
+                                "id_user": "1826457406",
+                                "id_product": 5,
+                                "id_company": 1111,
+                                "maintenance_ticket": 50,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-06",
+                                "end_date": "2021-07-31",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 5,
+                                "id_subscribe_product": 37,
+                                "id_user": "1826457406",
+                                "id_product": 39,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-07-16",
+                                "status_code": 1
+                            }
+                        ],
+                        "helper_for_user": "*1. Analytics*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*2. Continously Updated*\nMaintenance Ticket : 5\nRequest Date : 2021-07-30\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*3. Infrastructure as a Services*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-13\nEnd Date : 2022-01-22\nRequested By : rievaldy\n\n*4. Cloud Disaster Recovery*\nMaintenance Ticket : 50\nRequest Date : 2021-07-28\nStart Date : 2021-07-06\nEnd Date : 2021-07-31\nRequested By : rievaldy\n\n*5. DatAlert*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-07-16\nRequested By : rievaldy\n\n"
+                    }
+                },
+                {
+                    "response": "please describe the issues ...",
+                    "desc": "desc_maintenance",
+                    "value": "hang",
+                    "input_validation": "",
+                    "helper_information": ""
+                },
+                {
+                    "response": "from scale 1 to 3, how much impact does the problem have on your company ?...",
+                    "desc": "severity_level",
+                    "value": "2",
+                    "input_validation": "severity level",
+                    "helper_information": ""
+                }
+            ],
+            "result": ""
+        },
+        {
             "context": "list product",
-            "desc_tag": "show product",
+            "desc_tag": "daftar produk",
             "user_input": [],
             "result": [
                 {
@@ -287,134 +1032,166 @@
             ]
         },
         {
-            "context": "",
-            "desc_tag": "register account",
+            "context": "list maintenance",
+            "desc_tag": "lihat riwayat pemeliharaan",
             "user_input": [
                 {
-                    "response": "please input your full name ...",
-                    "desc": "name_user",
-                    "value": null,
-                    "input_validation": "name",
-                    "helper_information": []
-                },
-                {
-                    "response": "please input your email ...",
-                    "desc": "email_user",
-                    "value": null,
-                    "input_validation": "email",
-                    "helper_information": ""
-                },
-                {
-                    "response": "please input your phone_number ...",
-                    "desc": "phone_number",
-                    "value": null,
-                    "input_validation": "phone number",
-                    "helper_information": ""
-                },
-                {
-                    "response": "please input your address ...",
-                    "desc": "address_user",
-                    "value": null,
-                    "input_validation": "",
-                    "helper_information": ""
-                },
-                {
-                    "response": "please input your company id ...",
-                    "desc": "id_company",
-                    "value": null,
-                    "input_validation": "company",
-                    "helper_information": ""
+                    "response": "please input your id product ...",
+                    "desc": "id_subscribe_product",
+                    "value": 43,
+                    "input_validation": "available number option",
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_subscribe_product": 39,
+                                "id_user": "1070344922",
+                                "id_product": 34,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 2,
+                                "id_subscribe_product": 43,
+                                "id_user": "1070344922",
+                                "id_product": 30,
+                                "id_company": 1111,
+                                "maintenance_ticket": 5,
+                                "request_date": "2021-07-30",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 3,
+                                "id_subscribe_product": 35,
+                                "id_user": "1826457406",
+                                "id_product": 1,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-13",
+                                "end_date": "2022-01-22",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 4,
+                                "id_subscribe_product": 36,
+                                "id_user": "1826457406",
+                                "id_product": 5,
+                                "id_company": 1111,
+                                "maintenance_ticket": 50,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-06",
+                                "end_date": "2021-07-31",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 5,
+                                "id_subscribe_product": 37,
+                                "id_user": "1826457406",
+                                "id_product": 39,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-07-16",
+                                "status_code": 1
+                            }
+                        ],
+                        "helper_for_user": "*1. Analytics*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*2. Continously Updated*\nMaintenance Ticket : 5\nRequest Date : 2021-07-30\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*3. Infrastructure as a Services*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-13\nEnd Date : 2022-01-22\nRequested By : rievaldy\n\n*4. Cloud Disaster Recovery*\nMaintenance Ticket : 50\nRequest Date : 2021-07-28\nStart Date : 2021-07-06\nEnd Date : 2021-07-31\nRequested By : rievaldy\n\n*5. DatAlert*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-07-16\nRequested By : rievaldy\n\n"
+                    }
                 }
             ],
-            "result": null
-        },
-        {
-            "context": "",
-            "desc_tag": "register account",
-            "user_input": [
+            "result": [
                 {
-                    "response": "please input your full name ...",
-                    "desc": "name_user",
-                    "value": "rievaldy",
-                    "input_validation": "name",
-                    "helper_information": []
-                },
-                {
-                    "response": "please input your email ...",
-                    "desc": "email_user",
-                    "value": "rievaldy3235@gmail.com",
-                    "input_validation": "email",
-                    "helper_information": ""
-                },
-                {
-                    "response": "please input your phone_number ...",
-                    "desc": "phone_number",
-                    "value": "0895330343387",
-                    "input_validation": "phone number",
-                    "helper_information": ""
-                },
-                {
-                    "response": "please input your address ...",
-                    "desc": "address_user",
-                    "value": "jl.h.jali",
-                    "input_validation": "",
-                    "helper_information": ""
-                },
-                {
-                    "response": "please input your company id ...",
-                    "desc": "id_company",
-                    "value": "1111",
-                    "input_validation": "company",
-                    "helper_information": ""
+                    "id_user": "1070344922",
+                    "id_subcribe_product": 43,
+                    "request_date": "2021-07-30",
+                    "finish_date": null,
+                    "severity_level": 2,
+                    "status_code": 1
                 }
-            ],
-            "result": {
-                "id_user": 1826457406,
-                "name_user": "rievaldy",
-                "email_user": "rievaldy3235@gmail.com",
-                "phone_number": "0895330343387",
-                "address_user": "jl.h.jali",
-                "id_company": "1111"
-            }
+            ]
         },
         {
             "context": "maintenance",
-            "desc_tag": "requesting emergency maintenance",
+            "desc_tag": "pesan pemeliharaan darurat",
             "user_input": [
                 {
                     "response": "please input your id product ...",
                     "desc": "id_subscribe_product",
                     "value": null,
                     "input_validation": "available number option",
-                    "helper_information": []
-                },
-                {
-                    "response": "please describe the issues ...",
-                    "desc": "desc_maintenance",
-                    "value": null,
-                    "input_validation": "",
-                    "helper_information": ""
-                },
-                {
-                    "response": "from scale 1 to 3, how much impact does the problem have on your company ?...",
-                    "desc": "severity_level",
-                    "value": null,
-                    "input_validation": "severity level",
-                    "helper_information": ""
-                }
-            ],
-            "result": null
-        },
-        {
-            "context": "maintenance",
-            "desc_tag": "requesting emergency maintenance",
-            "user_input": [
-                {
-                    "response": "please input your id product ...",
-                    "desc": "id_subscribe_product",
-                    "value": null,
-                    "input_validation": "available number option",
-                    "helper_information": []
+                    "helper_information": {
+                        "helper_result": [
+                            {
+                                "number": 1,
+                                "id_subscribe_product": 39,
+                                "id_user": "1070344922",
+                                "id_product": 34,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 2,
+                                "id_subscribe_product": 43,
+                                "id_user": "1070344922",
+                                "id_product": 30,
+                                "id_company": 1111,
+                                "maintenance_ticket": 5,
+                                "request_date": "2021-07-30",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-09-04",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 3,
+                                "id_subscribe_product": 35,
+                                "id_user": "1826457406",
+                                "id_product": 1,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-13",
+                                "end_date": "2022-01-22",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 4,
+                                "id_subscribe_product": 36,
+                                "id_user": "1826457406",
+                                "id_product": 5,
+                                "id_company": 1111,
+                                "maintenance_ticket": 50,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-06",
+                                "end_date": "2021-07-31",
+                                "status_code": 1
+                            },
+                            {
+                                "number": 5,
+                                "id_subscribe_product": 37,
+                                "id_user": "1826457406",
+                                "id_product": 39,
+                                "id_company": 1111,
+                                "maintenance_ticket": 10,
+                                "request_date": "2021-07-28",
+                                "start_date": "2021-07-01",
+                                "end_date": "2021-07-16",
+                                "status_code": 1
+                            }
+                        ],
+                        "helper_for_user": "*1. Analytics*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*2. Continously Updated*\nMaintenance Ticket : 5\nRequest Date : 2021-07-30\nStart Date : 2021-07-01\nEnd Date : 2021-09-04\nRequested By : ujang jabbar\n\n*3. Infrastructure as a Services*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-13\nEnd Date : 2022-01-22\nRequested By : rievaldy\n\n*4. Cloud Disaster Recovery*\nMaintenance Ticket : 50\nRequest Date : 2021-07-28\nStart Date : 2021-07-06\nEnd Date : 2021-07-31\nRequested By : rievaldy\n\n*5. DatAlert*\nMaintenance Ticket : 10\nRequest Date : 2021-07-28\nStart Date : 2021-07-01\nEnd Date : 2021-07-16\nRequested By : rievaldy\n\n"
+                    }
                 },
                 {
                     "response": "please describe the issues ...",

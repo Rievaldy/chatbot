@@ -4,10 +4,10 @@ import requests
 import json
 from corebot import *
 from helper_func import *
-
+#https://api.telegram.org/bot{self.token}/sendMessage?chat_id={chat_id}&text={msg}&parse_mode=markdown
 class telegram_bot():
     def __init__(self):
-        self.token = "1853317583:AAG08Gk-6Y6RtPNXW2V8L8x6cPW7Z72ai5w"    #write your token here!
+        self.token = "1853317583:AAEPSYxZ8bEY8jXvmYdHJjavOCRVVpCXiPU"    #write your token here!
         self.url = f"https://api.telegram.org/bot{self.token}"
     def get_updates(self,offset=None):
             url = self.url+"/getUpdates?timeout=100"    # In 100 seconds if user input query then process that, use it as the read timeout from the server
@@ -26,8 +26,6 @@ tbot = telegram_bot()
 
 update_id = None
 
-chat_history = None
-user_status = None
 
 
 while True:
@@ -37,6 +35,13 @@ while True:
     updates = updates['result']
 
     id_user = ""
+    user_status = { 'isGoingThroughStep' : False,
+                    'for_desc_tag' : None,
+                    'waiting_for_input' : None,
+                    'process': None }
+    chat_history = []
+    template_json = {"user_status" : user_status,
+                    "chat_history": chat_history}
 
     reply = ""
 
@@ -50,7 +55,14 @@ while True:
             from_ = item["message"]["from"]["id"]
             id_user = from_
 
-        user_status, chat_history = open_user_dialog_file(id_user)
+        path = "chatbot\\test_siemese_network\\dialog\\"+str(id_user)+".json"
+        
+        if loadJson(path) != None:
+            template_json = loadJson(path)
+            chat_history = template_json['chat_history']
+            user_status = template_json['user_status']
+        else:
+            writeJson(template_json,path)
         
 
         if message == "/start" and user_status['isGoingThroughStep'] == False:
@@ -62,14 +74,14 @@ while True:
             elif len(ints) > 1  and ints !=None:
                 reply = "im confused, do you want to  "
                 for i in range(len(ints)) :
-                    response, desc_tag, permission,action, context = lookOnSpecificTag(ints[i])
-                    reply += desc_tag
+                    response, desc, permission,action, context = lookOnSpecificTag(ints[i])
+                    reply += desc
                     if i != len(ints)-1 : reply += " or "
                 reply+= " ?"
                 tbot.send_message(reply,from_)
             else :
-                response, desc_tag, permission, action, context = lookOnSpecificTag(ints[0])
-                user, message, for_user = performAction(process = "getUserInformation", action_step=None, id_user=id_user)
+                response, desc, permission, action, context = lookOnSpecificTag(ints[0])
+                user, for_user = performAction(process = "getUserInformation", action_step=None, id_user=id_user)
                 if permission == "Member" and  user == None:       
                         reply = "unable to do this command, need to register first"
                         tbot.send_message(reply,from_)
@@ -80,22 +92,39 @@ while True:
                     reply = response
                     tbot.send_message(reply,from_)
                     if action != "" :
-                        process, actionstep_template = gettingStepInput(action)
-                        if len(actionstep_template) > 0 :
-                            change_user_status(id_user=id_user, isGoingThroughStep=True, for_desc_tag= desc_tag, waiting_for_input=actionstep_template[0]['desc'])
+                        process, actionstep_template = gettingStepInput(action, id_user)
+                        print(actionstep_template)
+                        if len(actionstep_template) > 0 and isinstance(actionstep_template,list) :
+                            for i in range(len(actionstep_template)) :
+                                if actionstep_template[i]['value'] == None :
+                                    user_status['isGoingThroughStep'] = True
+                                    user_status['for_desc_tag'] = desc
+                                    user_status['waiting_for_input'] = actionstep_template[i]['desc']
+                                    user_status['process'] = process
+                                    if actionstep_template[i]['helper_information'] != "":
+                                        tbot.send_message(actionstep_template[0]['helper_information']['helper_for_user'], from_)
+
+                                    chat_history.append({'context' : context, 'desc_tag' : desc, 'user_input' : actionstep_template, 'result' : None})
+                                    writeJson(template_json, path)
+                                    tbot.send_message(actionstep_template[i]['response'], from_)
+                                    break
+                                elif actionstep_template[i]['value'] != None and i == len(actionstep_template)-1:
+                                    result, for_user = performAction(process = process, action_step = actionstep_template, id_user=id_user)
+                                    chat_history.append({'context' : context, 'desc_tag' : desc, 'user_input' : actionstep_template, 'result' : result})
+                                    tbot.send_message(for_user, from_)
+                                    writeJson(template_json, path)
                             # if len(trackValueNumber(id_user, actionstep_template[0]['desc'])) == 0 : 
-                            #     result, message, for_user = performAction(process = actionstep_template[0]['helper_information'], action_step = None, id_user = id_user)
+                            #     result, for_user = performAction(process = actionstep_template[0]['helper_information'], action_step = None, id_user = id_user)
                             #     actionstep_template[0]['helper_information'] = result
                             #     tbot.send_message(for_user, from_)
-                            #     add_user_chat_history(id_user=id_user, context=context, desc_tag=desc_tag, user_input=actionstep_template, result=None)
-                            #     chat_history.append({'context' : context, 'desc_tag' : desc_tag, 'user_input' : actionstep_template, 'result' : None})
-                            #     writeJson(template_json, path)
-                            add_user_chat_history(id_user=id_user,context=context, desc_tag=desc_tag,user_input=actionstep_template,result=None)
-                            tbot.send_message(actionstep_template[0]['response'], from_)
-                        else :
-                            result, message,for_user = performAction(process = process, action_step = None, id_user=id_user)
-                            add_user_chat_history(id_user=id_user,context=context, desc_tag=desc_tag,user_input=actionstep_template,result=result)
+
+                        elif len(actionstep_template) == 0 and isinstance(actionstep_template,list):
+                            result, for_user = performAction(process = process, action_step = None, id_user=id_user)
+                            chat_history.append({'context' : context, 'desc_tag' : desc, 'user_input' : actionstep_template, 'result' : result})
+                            writeJson(template_json,path)
                             tbot.send_message(for_user, from_)
+                        else : tbot.send_message(actionstep_template, from_)
+
         else :
             selected_chathistory = None
             for i in range(len(chat_history)-1, -1, -1) :
@@ -106,19 +135,20 @@ while True:
                             isRightInput, value, erMessage = validation(selected_chathistory['user_input'][j]['input_validation'], message, id_user, selected_chathistory['user_input'][j]['desc'])
                             if isRightInput == True :
                                 selected_chathistory['user_input'][j]['value'] = value
-                                if j+1 != len(selected_chathistory['user_input']) :
-                                    change_user_status(id_user=id_user, isGoingThroughStep="",for_desc_tag="", waiting_for_input=selected_chathistory['user_input'][j+1]['desc'],process="")
+                                if j+1 != len(selected_chathistory['user_input']) : 
+                                    user_status['waiting_for_input'] = selected_chathistory['user_input'][j+1]['desc']
                                     tbot.send_message(selected_chathistory['user_input'][j+1]['response'], from_)
                                     break
-                                else:  
-                                    change_user_status(id_user=id_user,isGoingThroughStep=False, for_desc_tag="", waiting_for_input=None,process="")    
+                                else:      
+                                    user_status['isGoingThroughStep'] = False
+                                    user_status['waiting_for_input'] = None
                                     break
                             else : tbot.send_message(erMessage, from_)
                     break
 
             if user_status['isGoingThroughStep'] == False :
                 process = user_status['process']
-                result, message, for_user = performAction(process= process, action_step = selected_chathistory['user_input'], id_user=id_user)
+                result, for_user = performAction(process= process, action_step = selected_chathistory['user_input'], id_user=id_user)
                 selected_chathistory['result'] = result
                 user_status['process'] = None
                 user_status['for_desc_tag'] = None

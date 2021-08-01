@@ -12,7 +12,6 @@ from sqlalchemy.orm import sessionmaker
 engine = create_engine('mysql://root:@localhost:3306/iprotect')
 Base.metadata.create_all(engine, checkfirst=True)
 Session = sessionmaker(bind=engine)
-session = Session()
 
 class Company(Base):
     __tablename__ = 'company'

@@ -9,8 +9,9 @@ from chatbotapi.data_model.db_func.db_maintenance_func import *
 
 action_map = json.load(open("chatbot\\test_siemese_network\\action_step.json"))
 
-def gettingStepInput(act_name):
+def gettingStepInput(act_name, id_user):
     action_step = []
+    
     process = ""
     
     for action in action_map['actions'] :
@@ -21,8 +22,23 @@ def gettingStepInput(act_name):
                     desc_name = step['desc']       
                     response_step = step['response']
                     validation_step = step['input_validation']
-                    helper_step = step['helper_information']
-                    action_step.append({"response" : response_step, "desc" : desc_name, "value": None, "input_validation" : validation_step, 'helper_information' : helper_step})
+                    helper_information = step['helper_information']
+                    helper_template = ""
+                    value_step = None
+                    if helper_information != "" :
+                        helper_result, helper_for_user = performAction(process=helper_information, action_step=None, id_user=id_user)
+                        if len(helper_result) > 1 :
+                            helper_template = {'helper_result' : helper_result, 'helper_for_user' : helper_for_user}
+                        elif len(helper_result) == 1 :
+                            value_step = helper_result[0][desc_name]
+                        else :
+                            helper_template = None
+                            action_step = helper_for_user
+                            return process,action_step
+                    if desc_name == 'id_company' : 
+                        user_information = getUserInformation(id_user)
+                        value_step = user_information['id_company'] if user_information != None else None
+                    action_step.append({"response" : response_step, "desc" : desc_name, "value": value_step, "input_validation" : validation_step, 'helper_information' : helper_template})
 
     return process,action_step
 
@@ -30,10 +46,9 @@ def gettingStepInput(act_name):
 def performAction(process,action_step,id_user):
     action_result = []
     for_user = ""
-    message = "here is the data :"
 
     if process == "getUserInformation" :action_result = getUserInformation(id_user)
-    elif process == "create_account" : message,action_result,for_user = createAccont(id_user, action_step)
+    elif process == "create_account" : action_result,for_user = createAccont(id_user, action_step)
     elif process == "retrive_list_brand" : action_result,for_user = retriveListBrand()
     elif process == "retrive_desc_brand" : action_result,for_user = retriveDescBrand(action_step)
     elif process == "retrive_list_product" : action_result,for_user = retriveListProduct()
@@ -43,7 +58,7 @@ def performAction(process,action_step,id_user):
     elif process == "request_maintenance" : action_result, for_user = requestMaintenance(id_user,action_step)
     elif process == "retrive_history_maintenance" : action_result, for_user = retriveHistoryMaintenance(action_step)
             
-    return action_result,message,for_user
+    return action_result,for_user
 
 def getUserInformation(id_user) :
     user = getUserData(id_user)
@@ -61,21 +76,25 @@ def createAccont(id_user,step_values):
     phone_number = step_values[2]['value']
     address_user = step_values[3]['value'] 
     id_company = step_values[4]['value']
-    message, newUser = insertUserData(id_user, name_user, email_user, phone_number, address_user, id_company)
-    for_user = "*Register Success \n\n" 
-    for_user +="Name : "+ newUser.name_user+"\n" 
-    for_user += "email : "+ newUser.email_user+"\n" 
-    for_user += "phone number : "+ newUser.phone_number+ "\n"
-    for_user += "adress : "+ newUser.address_user+"\n" 
-    for_user +=  "company : "+ str(newUser.id_company)+"\n" 
-    template_user = {
-        "id_user" : newUser.id_user, 
-        "name_user" : newUser.name_user, 
-        "email_user" : newUser.email_user, 
-        "phone_number" : newUser.phone_number,
-        "address_user" : newUser.address_user,
-        "id_company" : newUser.id_company} if newUser != None else ""
-    return message, template_user,for_user
+    newUser = insertUserData(id_user, name_user, email_user, phone_number, address_user, id_company)
+    print(newUser != None)
+    template_user = []
+    for_user = "register Failed"
+    if newUser != None :
+        for_user = "*Register Success* \n\n" 
+        for_user +="Name : "+ newUser.name_user+"\n" 
+        for_user += "email : "+ newUser.email_user+"\n" 
+        for_user += "phone number : "+ newUser.phone_number+ "\n"
+        for_user += "adress : "+ newUser.address_user+"\n" 
+        for_user +=  "company : "+ str(newUser.id_company)+"\n" 
+        template_user = {
+            "id_user" : newUser.id_user, 
+            "name_user" : newUser.name_user, 
+            "email_user" : newUser.email_user, 
+            "phone_number" : newUser.phone_number,
+            "address_user" : newUser.address_user,
+            "id_company" : newUser.id_company}
+    return template_user,for_user
 
 def retriveListBrand():
     brand_list = getAllBrand()
@@ -156,10 +175,12 @@ def retriveDescProduct(step_values):
     return template_product,for_user
 
 def retriveListCompanyProduct(id_user, step_values):
+    print("masuk")
     user_information = getUserData(id_user)
     print(user_information.id_company)
     id_company = user_information.id_company if step_values == None else step_values[0]['value']
-    message, subscribe_products = getAlSubscribeProductByCompany(id_company)
+    subscribe_products = getAlSubscribeProductByCompany(id_company)
+    print(subscribe_products)
     template_subscribe_products = []
     for_user = ""
 
@@ -183,9 +204,10 @@ def retriveListCompanyProduct(id_user, step_values):
             for_user+= "Start Date : " + str(subscribe_products[i][0].start_date) +"\n" 
             for_user+= "End Date : " + str(subscribe_products[i][0].end_date) +"\n" 
             for_user+= "Requested By : " + subscribe_products[i][1].name_user +"\n\n"
-    else: "your company dont have any subscribed product please request 1 if u interested"
 
-    return template_subscribe_products, for_user
+        return template_subscribe_products, for_user
+
+    else:return  template_subscribe_products,"your company dont have any subscribed product please request 1 if u interested" 
 
 #belom
 def requestProduct(id_user,step_values):
@@ -215,7 +237,7 @@ def requestProduct(id_user,step_values):
             "status_code" : subscribe_product.status_code }
         return template_subscribe_product, for_user
     
-    else : return "", ""
+    else : return "", "your company already has this product"
 
 def requestMaintenance(id_user, step_values):
     id_subscribe_product = step_values[0]['value']
@@ -243,7 +265,7 @@ def requestMaintenance(id_user, step_values):
             "severity_level" : maintenance.severity_level,
             "status_code" : maintenance.status_code }
         return template_subscribe_product, for_user
-    else : return "", ""
+    else : return "", "your company already request maintenance for this product today"
 
 def retriveHistoryMaintenance(step_values):
     id_subscribe_product = step_values[0]['value']
@@ -268,5 +290,5 @@ def retriveHistoryMaintenance(step_values):
                 "severity_level" : maintenance[i].severity_level,
                 "status_code" : maintenance[i].status_code })
         return template_subscribe_product, for_user
-    else : return "", ""
+    else : return template_subscribe_product, "your company dont have any maintenance history for now"
 

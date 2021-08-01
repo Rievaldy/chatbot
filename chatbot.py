@@ -3,24 +3,18 @@ import re
 import numpy as np
 import random
 import matplotlib.pyplot as plt  #for visualization
-import nltk
 import pickle as pkl
 
-from nltk.corpus import stopwords
-from nltk.stem.snowball import SnowballStemmer
-from nltk import word_tokenize
-from nltk.stem import WordNetLemmatizer
-from chatbotapi.data_model.db_func.db_brand_func import *
 from lstm_func import *
-from text_preprocesssing import *
+from text_processing_id import *
 
-intents = json.load(open('chatbot\\test_siemese_network\\intents.json'))
+intents = json.load(open('chatbot\\test_siemese_network\\intents_id.json'))
 words = []
 labels = []
 documents = []
 maxlength_sentence = 11
 
-documents,labels,words = splitdata(intents)
+documents, labels, words = splitdata(intents)
 
 
 words = sorted(set(words))
@@ -100,7 +94,7 @@ print(np.asarray(y_data).shape)
 #number of input epochs
 ephocs = 50
 #number of input units or embedding size
-input_units = 100
+input_units = 50
 
 #number of hidden neurons
 hidden_units = 256

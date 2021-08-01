@@ -167,9 +167,9 @@ def forward_propagation(sentence,hidden_units,parameters,embeddings):
         ot = output_cell(at,parameters)
         
         #store the time 't' activations in caches
-        lstm_cache['lstm' + str(i+1)]  = lstm_activations
+        lstm_cache['lstm'+str(i+1)]  = lstm_activations
         activation_cache['a'+str(i+1)] = at
-        cell_cache['c' + str(i+1)] = ct
+        cell_cache['c'+str(i+1)] = ct
         output_cache['o'+str(i+1)] = ot
         
         

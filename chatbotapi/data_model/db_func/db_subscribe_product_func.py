@@ -1,5 +1,6 @@
 import sys
 import os.path
+from sqlalchemy.exc import IntegrityError
 
 from sqlalchemy.sql.expression import null
 sys.path.append(
@@ -12,11 +13,16 @@ session = Session()
 
 def insertSubscribeProduct(id_user,id_company , id_product, status_code):
     newSubscribeProduct = SubscribeProduct(id_user=id_user,id_company=id_company, id_product=id_product, status_code=status_code)
-    session.add(newSubscribeProduct)
-    session.commit()
-    message = "request product success"
-
-    return newSubscribeProduct
+    try:
+        session.add(newSubscribeProduct)
+        session.commit()     
+    except IntegrityError as e:
+        Session.rollback()
+        code = e.orig.args[0]
+        print(code)    
+        return None
+    else : return newSubscribeProduct
+    
 
 def updateSubscribeProduct(id_subscribe_product, field_name, value):
     subscribe_product = session.query(SubscribeProduct).filter(SubscribeProduct.id_subscribe_product == id_subscribe_product)
@@ -35,12 +41,12 @@ def getAllSubscribeProduct():
     return subscribe_product
 
 def getAlSubscribeProductByCompany(id_company):
-    subscribe_product = session.query(SubscribeProduct, User, Company, Product).join(User, User.id_user == SubscribeProduct.id_user).join(Company, Company.id_company == SubscribeProduct.id_company).join(Product, Product.id_product == SubscribeProduct.id_product).filter(SubscribeProduct.id_company == id_company and SubscribeProduct.status_code == 1).all()
+    subscribe_product = session.query(SubscribeProduct, User, Company, Product).join(User, User.id_user == SubscribeProduct.id_user).join(Company, Company.id_company == SubscribeProduct.id_company).join(Product, Product.id_product == SubscribeProduct.id_product).filter(SubscribeProduct.id_company == id_company , SubscribeProduct.status_code == 1).all()
     session.commit()
     if len(subscribe_product) > 0 :
-        return "product Found", subscribe_product
+        return subscribe_product
     else :
-        return "product Not Found", subscribe_product
+        return None
 
 def getSubscribeProductByIdSubscribe(id_subcribe_product):
     subscribe_product = session.query(SubscribeProduct, User, Company, Product,Brand).join(User, User.id_user == SubscribeProduct.id_user).join(Company, Company.id_company == SubscribeProduct.id_company).join(Product, Product.id_product == SubscribeProduct.id_product).join(Brand, Brand.id_brand == Product.id_brand).filter(SubscribeProduct.id_subcribe_product == id_subcribe_product).first()

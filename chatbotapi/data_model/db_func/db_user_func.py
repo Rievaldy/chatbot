@@ -12,35 +12,19 @@ sys.path.append(
 from model_db import User, Session
 from model_db import User,Session
 
-session = Session()
-
-def extract_explainer(code,text,id_company):
-    
-    regex1452 = re.compile(r'(?<=REFERENCES\s\`)[A-Z|a-z]+')
-
-    if code == 1062 :
-        message = " already exist !"
-
-    if code == 1452 :
-        value = re.findall(regex1452, text)
-        message = "can't found "+ value[0]
-    return message
-    
+session = Session() 
 
 def insertUserData(id_user, name_user, email_user, phone_number, address_user, id_company):
     newUser = User(id_user= id_user, name_user=name_user, email_user=email_user, address_user=address_user, phone_number=phone_number, id_company=id_company)
-    message = ""
     try:
         session.add(newUser)
         session.commit()
     except IntegrityError as e:
-        code = e.orig.args[0]
         explain = e.orig.args[1]
-        print(code)
-        message = extract_explainer(code,explain,id_company)
-        return message,newUser
+        print(explain)
+        return None
     else:
-        return "Register Success", newUser
+        return newUser
 
 def updateUserData(id_user, field_name, value):
     user = session.query(User).filter(User.id_user == id_user)

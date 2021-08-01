@@ -6,10 +6,10 @@ import pickle as pkl
 import json
 from nltk import word_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import SnowballStemmer
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from lstm_func import *
 
-intents = json.load(open('chatbot\\test_siemese_network\\intents.json'))
+intents = json.load(open('chatbot\\test_siemese_network\\intents_id.json'))
 saved_embeddings  = pkl.load(open('embeddings.pkl','rb'))
 saved_parameters  = pkl.load(open('parameters.pkl','rb'))
 saved_id_word  = pkl.load(open('id_word.pkl','rb'))
@@ -17,12 +17,12 @@ saved_word_id  = pkl.load(open('word_id.pkl','rb'))
 saved_id_label  = pkl.load(open('id_label.pkl','rb'))
 saved_label_id  = pkl.load(open('label_id.pkl','rb'))
 ignore_latters = ['?','!','.',',']
-stop_word = set(stopwords.words('english'))
+stop_word = set(stopwords.words('indonesian'))
 
 
 
 def hotEncodeMessage(message):
-    stemmer = SnowballStemmer('english')
+    stemmer = StemmerFactory().create_stemmer()
     messageEncoded = []
 
     words = word_tokenize(message)

@@ -82,7 +82,7 @@
                     "response" : "please input your company id ...",
                     "value" : "",
                     "helper_information" : "",
-                    "input_validation" : "available number option"
+                    "input_validation" : "company"
                 }],
             "response" : "please wait i'm checking your data...",
             "process" : "retrive_list_company_product"
