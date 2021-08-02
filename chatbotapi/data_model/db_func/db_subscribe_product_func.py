@@ -17,7 +17,7 @@ def insertSubscribeProduct(id_user,id_company , id_product, status_code):
         session.add(newSubscribeProduct)
         session.commit()     
     except IntegrityError as e:
-        Session.rollback()
+        session.rollback()
         code = e.orig.args[0]
         print(code)    
         return None

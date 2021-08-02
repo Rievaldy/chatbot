@@ -38,6 +38,7 @@ class User(Base):
     phone_number = Column(String(30),unique = True, nullable=False)
     id_company = Column(ForeignKey('company.id_company'), nullable = False)
     subscribeproduct = relationship('SubscribeProduct', lazy = True)
+    chat_history = relationship('ChatHistory', lazy = True)
     maintenance = relationship('Maintenance', lazy = True)
     
 
@@ -122,6 +123,25 @@ class SubscribeProduct(Base):
         #self.start_date = start_date
         #self.end_date = end_date
         self.status_code = status_code
+
+class ChatHistory(Base):
+    __tablename__ = 'chat_history'
+
+    id_chat = Column(mysql.INTEGER(11), primary_key=True)
+    id_user = Column(ForeignKey('user.id_user'), nullable = False)
+    user_input = Column(mysql.TEXT, nullable = False)
+    chatbot_response = Column(mysql.TEXT,nullable = True)
+    desc_tag = Column(String(50), nullable=False)
+    status_desc = Column(String(50), nullable=True)
+    create_date = Column(DateTime, default=datetime.date.today , nullable = True)
+    create_date_time = Column(DateTime, default=datetime.datetime.utcnow , nullable = True)
+
+    def __init__(self,id_user, user_input, chatbot_response ,desc_tag, status_desc) :
+        self.id_user = id_user
+        self.user_input = user_input
+        self.chatbot_response = chatbot_response
+        self.desc_tag = desc_tag
+        self.status_desc = status_desc
 
 
 # db.drop_all()
