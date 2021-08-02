@@ -2686,6 +2686,93 @@
                 }
             ],
             "result": ""
+        },
+        {
+            "context": "list brand",
+            "desc_tag": "daftar merek",
+            "user_input": [],
+            "result": [
+                {
+                    "number": 1,
+                    "id_brand": 1,
+                    "name_brand": "Alibaba Cloud"
+                },
+                {
+                    "number": 2,
+                    "id_brand": 2,
+                    "name_brand": "Cloud Xtream"
+                },
+                {
+                    "number": 3,
+                    "id_brand": 3,
+                    "name_brand": "Cyberinc"
+                },
+                {
+                    "number": 4,
+                    "id_brand": 4,
+                    "name_brand": "Edgecore Networks"
+                },
+                {
+                    "number": 5,
+                    "id_brand": 5,
+                    "name_brand": "Esri"
+                },
+                {
+                    "number": 6,
+                    "id_brand": 6,
+                    "name_brand": "Extreme Networks"
+                },
+                {
+                    "number": 7,
+                    "id_brand": 7,
+                    "name_brand": "Finisar"
+                },
+                {
+                    "number": 8,
+                    "id_brand": 8,
+                    "name_brand": "G Element"
+                },
+                {
+                    "number": 9,
+                    "id_brand": 9,
+                    "name_brand": "Hillstone Networks"
+                },
+                {
+                    "number": 10,
+                    "id_brand": 10,
+                    "name_brand": "IBM"
+                },
+                {
+                    "number": 11,
+                    "id_brand": 11,
+                    "name_brand": "Ignite Net"
+                },
+                {
+                    "number": 12,
+                    "id_brand": 12,
+                    "name_brand": "Imperva"
+                },
+                {
+                    "number": 13,
+                    "id_brand": 13,
+                    "name_brand": "Lenovo"
+                },
+                {
+                    "number": 14,
+                    "id_brand": 14,
+                    "name_brand": "SAS"
+                },
+                {
+                    "number": 15,
+                    "id_brand": 15,
+                    "name_brand": "Sensormatic by Johnson Co"
+                },
+                {
+                    "number": 16,
+                    "id_brand": 16,
+                    "name_brand": "Varonis"
+                }
+            ]
         }
     ]
 }
