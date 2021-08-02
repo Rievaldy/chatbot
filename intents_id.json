@@ -89,7 +89,7 @@
             "action" : "act_request_product"
         },
         {"tag"      : "lihat_produk_user",
-            "patterns"  : ["dapatkah Anda menunjukkan kepada saya produk yang perusahaan saya miliki?", "apakah Anda memiliki produk yang perusahaan saya miliki?", "dapatkah Anda memberi saya informasi produk yang perusahaan saya miliki?", "saya mau lihat produk yang perusahaan saya miliki", "saya ingin melihat produk yang perusahaan saya miliki", "lihat produk yang perusahaan saya miliki","produk apa saja yang perusahaan saya miliki?","bisa lihat produk yang perusahaan saya miliki tidak ya ?","dapatkah saya melihat produk yang perusahaan saya miliki ?","dapatkah Anda menunjukkan kepada saya produk yang perusahaan saya miliki, tolong!"],
+            "patterns"  : ["dapatkah Anda menunjukkan kepada saya produk yang perusahaan saya miliki?", "tunjukkan produk yang perusahaan saya miliki", "dapatkah Anda memberi saya informasi produk yang perusahaan saya miliki?", "saya mau lihat produk yang perusahaan saya miliki", "saya ingin melihat produk yang perusahaan saya miliki", "lihat produk yang perusahaan saya miliki","produk apa saja yang perusahaan saya miliki?","bisa lihat produk yang perusahaan saya miliki tidak ya ?","dapatkah saya melihat produk yang perusahaan saya miliki ?","dapatkah Anda menunjukkan kepada saya produk yang perusahaan saya miliki, tolong!"],
             "responses" : "mencari data produk perusahaan, mohon tunggu....",
             "desc" : "lihat produk user",
             "context" : "lihat produk user",

@@ -29,6 +29,7 @@ def trackValueNumber(id_user, finding_for):
         if chat_history[len(chat_history)-1]['user_input'][i]['desc'] == finding_for and chat_history[len(chat_history)-1]['user_input'][i]['helper_information'] != "":
             isFound = True
             data_number =  chat_history[len(chat_history)-1]['user_input'][i]['helper_information']['helper_result']
+            break
 
     if len(chat_history) > 4 and isFound == False:
         for i in range(len(chat_history)-1,len(chat_history)-4,-1 ) :

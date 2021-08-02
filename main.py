@@ -113,6 +113,7 @@ while True:
                                     chat_history.append({'context' : context, 'desc_tag' : desc, 'user_input' : actionstep_template, 'result' : result})
                                     tbot.send_message(for_user, from_)
                                     writeJson(template_json, path)
+                                    break
                             # if len(trackValueNumber(id_user, actionstep_template[0]['desc'])) == 0 : 
                             #     result, for_user = performAction(process = actionstep_template[0]['helper_information'], action_step = None, id_user = id_user)
                             #     actionstep_template[0]['helper_information'] = result
@@ -143,7 +144,9 @@ while True:
                                     user_status['isGoingThroughStep'] = False
                                     user_status['waiting_for_input'] = None
                                     break
-                            else : tbot.send_message(erMessage, from_)
+                            else : 
+                                tbot.send_message(erMessage, from_)
+                                break
                     break
 
             if user_status['isGoingThroughStep'] == False :
